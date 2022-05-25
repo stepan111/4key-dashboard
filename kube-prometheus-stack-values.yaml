@@ -1,0 +1,45 @@
+nameOverride: "prometheus"
+
+namespaceOverride: "monitoring"
+
+fullnameOverride: "prometheus"
+
+grafana:
+  grafana.ini:
+    auth.anonymous:
+      enabled: true
+      org_role: Admin
+    users:
+      auto_assign_org_role: Admin
+
+
+kube-state-metrics:
+  namespaceOverride: "monitoring"
+  customLabels:
+    release: prometheus
+
+prometheus-node-exporter:
+  namespaceOverride: "monitoring"
+
+
+
+prometheus:
+  prometheusSpec:
+    prometheusRulesExcludedFromEnforce: false
+
+  config:
+    global:
+      resolve_timeout: 5m
+
+kubeControllerManager:
+  enabled: false
+coreDns:
+  enabled: true
+kubeDns:
+  enabled: false
+
+defaultRules:
+  rules:
+    kubeScheduler: false
+    kubernetesResources: false
+    kubeApiserver: false
