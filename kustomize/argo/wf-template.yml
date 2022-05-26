@@ -11,9 +11,9 @@ spec:
   templates:
   - name: build
     steps:
-      - name: clone
+    - - name: clone
         template: git-clone
-      - name: push
+    - - name: push
         template: kaniko
   - name: git-clone
     container:
