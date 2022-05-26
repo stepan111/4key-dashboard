@@ -3,7 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: build
 spec:
-  entrypoint: git-clone
+  entrypoint: build
   volumes:
     - name: code
       emptyDir:
