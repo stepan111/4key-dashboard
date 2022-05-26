@@ -36,7 +36,7 @@ spec:
   - name: kaniko
     container:
       image: gcr.io/kaniko-project/executor:debug
-      command: ["ls","/tmp/git"]
+      command: ["ls","-R","/tmp/git"]
       # command: ["/kaniko/executor"]
       # args: [ 
       #   "--insecure",
