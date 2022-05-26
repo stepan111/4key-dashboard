@@ -1,3 +1,0 @@
-{
-    "insecure-registries" : ["registry-docker-registry.registry:5000"]
-}

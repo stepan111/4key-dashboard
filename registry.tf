@@ -7,5 +7,13 @@ resource "helm_release" "registry" {
   namespace         = "registry"
   dependency_update = "true"
   create_namespace  = "true"
+  set {
+    name  = "service.type"
+    value = "NodePort"
+  }
+  set {
+    name  = "service.nodePort"
+    value = "30000"
+  }
 
 }
