@@ -34,8 +34,7 @@ spec:
       command: ["/kaniko/executor"]
       args: [ 
         "--insecure",
-        "--dockerfile=/tmp/git/Dockerfile",
-        "--context=/tmp/git",
+        "--context=/tmp/git/podinfo",
         "--destination=registry-docker-registry.registry:5000"]
       volumeMounts:
         - name: code
