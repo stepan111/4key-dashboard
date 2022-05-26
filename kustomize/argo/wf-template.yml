@@ -9,26 +9,29 @@ spec:
       emptyDir:
         medium: Memory
   templates:
-  - - name: git-clone
-      container:
-        image: k8s.gcr.io/git-sync/git-sync:v3.1.7
-        args: [
-          "--one-time",
-          "--depth", "1",
-          "--dest", "checkout",
-          "--repo", "https://github.com/stefanprodan/podinfo.git",
-          "--branch", "master"]
-        volumeMounts:
-          - name: code
-            mountPath: /tmp/git
-    - name: kaniko
-      container:
-        image: gcr.io/kaniko-project/executor:debug
-        args: [ 
-          "--insecure",
-          "--dockerfile=./Dockerfile",
-           "--context=/tmp/git",
-           "--destination=registry-docker-registry.registry:5000"]
-        volumeMounts:
-          - name: code
-            mountPath: /tmp/git
+  - name: dag
+    dag:
+      tasks:
+      - name: git-clone
+        container:
+          image: k8s.gcr.io/git-sync/git-sync:v3.1.7
+          args: [
+            "--one-time",
+            "--depth", "1",
+            "--dest", "checkout",
+            "--repo", "https://github.com/stefanprodan/podinfo.git",
+            "--branch", "master"]
+          volumeMounts:
+            - name: code
+              mountPath: /tmp/git
+      - name: kaniko
+        container:
+          image: gcr.io/kaniko-project/executor:debug
+          args: [ 
+            "--insecure",
+            "--dockerfile=./Dockerfile",
+            "--context=/tmp/git",
+            "--destination=registry-docker-registry.registry:5000"]
+          volumeMounts:
+            - name: code
+              mountPath: /tmp/git
