@@ -18,6 +18,7 @@ spec:
   - name: git-clone
     container:
       image: k8s.gcr.io/git-sync/git-sync:v3.1.7
+      command: /git-sync
       args: [
         "--one-time",
         "--depth", "1",
@@ -30,6 +31,7 @@ spec:
   - name: kaniko
     container:
       image: gcr.io/kaniko-project/executor:debug
+      command: /kaniko/executor
       args: [ 
         "--insecure",
         "--dockerfile=./Dockerfile",
