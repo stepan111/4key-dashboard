@@ -25,6 +25,7 @@ spec:
             - name: code
               mountPath: /tmp/git
       - name: kaniko
+        depends: "git-clone"
         container:
           image: gcr.io/kaniko-project/executor:debug
           args: [ 
