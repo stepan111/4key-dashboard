@@ -1,0 +1,13 @@
+controller:
+  metricsConfig:
+    enabled: true
+  serviceMonitor:
+    enabled: true
+    additionalLabels:
+      release: prometheus
+    namespace: argo
+
+server:
+  enabled: true
+  extraArgs:
+  - --auth-mode=server

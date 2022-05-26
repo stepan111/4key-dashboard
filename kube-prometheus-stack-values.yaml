@@ -37,6 +37,12 @@ coreDns:
   enabled: true
 kubeDns:
   enabled: false
+kubeEtcd:
+  enabled: false
+kubeProxy:
+  enabled: false
+kubeScheduler:
+  enabled: false
 
 defaultRules:
   rules:

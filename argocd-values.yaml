@@ -16,6 +16,14 @@ dex:
   enabled: false
 
 controller:
+  metrics:
+    enabled: true
+    labels:
+      - "release: prometheus"
+    serviceMonitor:
+      enabled: true
+      selector:
+        release: prometheus
   resources:
     limits:
       cpu: 500m
