@@ -36,12 +36,12 @@ spec:
   - name: kaniko
     container:
       image: gcr.io/kaniko-project/executor:debug
-      # command: ["ls","-R","/tmp/git"]
+      # command: ["ls","-l","/tmp/git/podinfo"]
       command: ["/kaniko/executor"]
       args: [ 
         "--insecure",
-        "--context=/tmp/git/",
-        "--destination=registry-docker-registry.registry:5000"]
+        "--context=/tmp/git/podinfo",
+        "--destination=registry-docker-registry.registry:5001"]
       volumeMounts:
         - name: code
           mountPath: /tmp/git
