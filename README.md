@@ -3,7 +3,7 @@ Steps:
 1.  create kind cluster
 ```
 
-kind create cluster  --name cluster
+kind create cluster --config ./kind.yaml --name cluster
 
 ```
 2. Run terraform
