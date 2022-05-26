@@ -24,12 +24,11 @@ spec:
     - name: kaniko
       container:
         image: gcr.io/kaniko-project/executor:debug
-        args: [
+        args: 
           - "--insecure"
           - "--dockerfile=./Dockerfile"
           - "--context=/tmp/git" 
           - "--destination=registry-docker-registry.registry:5000"
-        ]
         volumeMounts:
           - name: code
             mountPath: /tmp/git
