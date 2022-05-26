@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: podinfo
-        image: stefanprodan/podinfo:latest
+        image: registry-docker-registry.registry:5000/podinfo:latest
