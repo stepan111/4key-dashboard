@@ -41,7 +41,7 @@ spec:
       args: [ 
         "--insecure",
         "--context=/tmp/git/podinfo",
-        "--destination=registry-docker-registry.registry:5000"]
+        "--destination=registry-docker-registry.registry:5000/podinfo:latest"]
       volumeMounts:
         - name: code
           mountPath: /tmp/git
