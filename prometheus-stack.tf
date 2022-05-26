@@ -1,11 +1,4 @@
 
-provider "helm" {
-  kubernetes {
-    config_context = "kind-cluster"
-    config_path    = "~/.kube/config"
-  }
-
-}
 
 
 resource "helm_release" "prometheus" {
@@ -24,3 +17,4 @@ resource "helm_release" "prometheus" {
 
 
 }
+

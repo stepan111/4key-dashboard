@@ -1,0 +1,25 @@
+
+server:
+  extraArgs:
+  - "--insecure"
+  config:
+    users.anonymous.enabled: "true"
+    application.instanceLabelKey: argocd.argoproj.io/instance
+    repositories: |
+      - type: git
+        url: https://github.com/stepan111/4key-dashboard.git
+  rbacConfigCreate: false
+    # rbacConfig: 
+    #   policy.default: "role:admin"
+ #
+dex:
+  enabled: false
+
+controller:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+    requests:
+      cpu: 50m
+      memory: 256Mi
