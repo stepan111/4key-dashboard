@@ -9,12 +9,12 @@ spec:
       emptyDir:
         medium: Memory
   templates:
-  - name: build
-    steps:
-    - - name: clone
-        template: git-clone
-      - name: push
-        template: kaniko
+  # - name: build
+  #   steps:
+  #   - - name: clone
+  #       template: git-clone
+  #     - name: push
+  #       template: kaniko
   - name: git-clone
     container:
       image: k8s.gcr.io/git-sync/git-sync:v3.1.7
