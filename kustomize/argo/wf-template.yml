@@ -6,8 +6,8 @@ spec:
   entrypoint: build
   volumes:
     - name: code
-      emptyDir:
-        medium: Memory
+      emptyDir: {}
+        
   templates:
   - name: build
     steps:
