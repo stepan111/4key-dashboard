@@ -28,7 +28,7 @@ spec:
         "--one-time",
         "--depth", "1",
         "--dest", "podinfo",
-        "--repo", "https://github.com/apenella/simple-go-helloworld.git",
+        "--repo", "https://github.com/dockersamples/101-tutorial.git",
         "--branch", "master"]
       volumeMounts:
         - name: code
