@@ -27,7 +27,7 @@ spec:
       args: [
         "--one-time",
         "--depth", "1",
-        "--dest", "checkout",
+        "--dest", "podinfo",
         "--repo", "https://github.com/stefanprodan/podinfo.git",
         "--branch", "master"]
       volumeMounts:
@@ -36,12 +36,12 @@ spec:
   - name: kaniko
     container:
       image: gcr.io/kaniko-project/executor:debug
-      command: ["ls","-R","/tmp/git"]
-      # command: ["/kaniko/executor"]
-      # args: [ 
-      #   "--insecure",
-      #   "--context=/tmp/git/",
-      #   "--destination=registry-docker-registry.registry:5000"]
+      # command: ["ls","-R","/tmp/git"]
+      command: ["/kaniko/executor"]
+      args: [ 
+        "--insecure",
+        "--context=/tmp/git/",
+        "--destination=registry-docker-registry.registry:5000"]
       volumeMounts:
         - name: code
           mountPath: /tmp/git
