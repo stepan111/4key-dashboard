@@ -9,11 +9,9 @@ spec:
       emptyDir:
         medium: Memory
   templates:
-  - name: dag
-    dag:
-      tasks:
-      - name: git-clone
-        container:
+  - name: build
+    initContainer:
+        - name: git-clone
           image: k8s.gcr.io/git-sync/git-sync:v3.1.7
           args: [
             "--one-time",
@@ -24,6 +22,7 @@ spec:
           volumeMounts:
             - name: code
               mountPath: /tmp/git
+    container:
       - name: kaniko
         depends: "git-clone"
         container:
