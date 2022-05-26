@@ -4,9 +4,14 @@ metadata:
   name: build
 spec:
   entrypoint: build
-  volumes:
-    - name: code
-      emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: code
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 64Mi
         
   templates:
   - name: build
