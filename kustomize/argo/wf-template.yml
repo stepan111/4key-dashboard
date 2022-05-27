@@ -27,7 +27,7 @@ spec:
       args: [
         "--one-time",
         "--depth", "1",
-        "--dest", "podinfo",
+        "--dest", "app",
         "--repo", "https://github.com/dockersamples/linux_tweet_app.git",
         "--branch", "master"]
       volumeMounts:
@@ -36,13 +36,13 @@ spec:
   - name: kaniko
     container:
       image: gcr.io/kaniko-project/executor:debug
-      # command: ["ls","-l","/tmp/git/podinfo"]
+      # command: ["ls","-l","/tmp/git/app"]
       command: ["/kaniko/executor"]
       args: [ 
         "--insecure",
         "--dockerfile=Dockerfile",
-        "--context=/tmp/git/podinfo",
-        "--destination=registry-docker-registry.registry:5000/podinfo:latest"]
+        "--context=/tmp/git/app",
+        "--destination=registry-docker-registry.registry:5000/app:latest"]
       volumeMounts:
         - name: code
           mountPath: /tmp/git
