@@ -13,6 +13,9 @@ resource "helm_release" "argocd" {
     file("${path.root}/argocd-values.yaml",
     )
   ]
+  depends_on = [
+    helm_release.prometheus
+  ]
 }
 
 resource "kubernetes_config_map" "example" {
@@ -43,6 +46,9 @@ resource "helm_release" "workflow" {
   values = [
     file("${path.root}/argowf-values.yaml",
     )
+  ]
+  depends_on = [
+    helm_release.prometheus
   ]
 }
 
