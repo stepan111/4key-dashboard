@@ -4,3 +4,4 @@ namespace: argo
 resources:
 - ./wf-template.yml
 - ./sensor.yaml
+- ./app.yaml

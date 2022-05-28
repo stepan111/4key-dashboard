@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  service.webhook.build: |
+    url: http://webhook-eventsource-svc:12000
+
+  template.git-commit: |
+    webhook:
+      build:
+        method: POST
+        path: /build
+        body: |
+         {}
+  trigger.build: |
+    - when: app.status.operationState.phase in ['Running']
+      send: [git-commit]
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+spec:
+  # destination:
+  #   server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: README.md
+    repoURL: https://github.com/stepan111/4key-dashboard.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
