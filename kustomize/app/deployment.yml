@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: app
-        image: registry-docker-registry.registry:5000/app:latest
+        image: registry-docker-registry.registry:5000/nginx:latest

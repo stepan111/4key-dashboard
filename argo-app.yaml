@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: app
   namespace: argo
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: registry-docker-registry.registry:5000/nginx
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -13,19 +15,19 @@ spec:
     targetRevision: HEAD
   syncPolicy:
     automated: {}
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: argo
-  namespace: argo
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    path: kustomize/argo
-    repoURL: https://github.com/stepan111/4key-dashboard.git
-    targetRevision: HEAD
-  syncPolicy:
-    automated: {}
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: argo
+#   namespace: argo
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#   project: default
+#   source:
+#     path: kustomize/argo
+#     repoURL: https://github.com/stepan111/4key-dashboard.git
+#     targetRevision: HEAD
+#   syncPolicy:
+#     automated: {}
