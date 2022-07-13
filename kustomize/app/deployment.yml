@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: app
-        image: argo.local-k8s.pp.ua/nginx
+        image: argo.local-k8s.pp.ua/nginx:111
